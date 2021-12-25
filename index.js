@@ -1,0 +1,18 @@
+const connect= require('./db')
+connect();
+const cors=require('cors')
+const express = require('express')
+const helmet=require('helmet')
+const morgan=require('morgan')
+const app = express()
+app.use(cors())
+app.use(express.json())
+app.use(helmet())
+app.use(morgan("common"))
+app.use('/api/auth', require('./router/auth'))
+app.use('/api/users', require('./router/users'))
+app.use('/api/posts', require('./router/post')) 
+app.use('/api/conversation', require('./router/conversation'))
+app.use('/api/messages', require('./router/message'))
+const PORT=process.env.PORT||5000
+app.listen(PORT)
