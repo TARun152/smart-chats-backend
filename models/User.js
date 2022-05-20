@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true, min: 3, max: 12, unique: true },
+  name: { type: String},
   email: {
-    type: String,
-    required: true,
-    unique: true
+    type: String
   },
-  password: { type: String, min: 6, required: true },
-  cpassword: { type: String, min: 6, required: true },
+  password: { type: String},
+  cpassword: { type: String},
   profilePicture: {
     type: String,
     default: ""
@@ -43,6 +41,9 @@ const userSchema = new mongoose.Schema({
   },
   relationship:{
     type: String
+  },
+  DOB:{
+    type: Date
   }
 },{ timestamps: true });
 // userSchema.methods.generatetoken = async function () {

@@ -17,6 +17,7 @@ const router=express.Router()
     // then update entire body
     try {
         await user.findByIdAndUpdate(req.params.id,{$set:req.body})
+        console.log("ok")
         res.send("successfully updated")
     } catch (error) {
         return res.send("not updated")
